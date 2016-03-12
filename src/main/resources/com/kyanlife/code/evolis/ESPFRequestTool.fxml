@@ -1,0 +1,56 @@
+
+<?import javafx.scene.layout.GridPane?>
+
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.TextField?>
+<GridPane fx:controller="com.kyanlife.code.evolis.ESPFRequestToolController"
+          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
+
+    <Text GridPane.columnIndex="0" GridPane.rowIndex="0">This is a simple tool to test the Evolis Premium SDK.
+    It sends the raw JSON request to the server and displays the response.</Text>
+
+    <GridPane GridPane.columnIndex="0" GridPane.rowIndex="1" hgap="10" vgap="5">
+
+        <Text GridPane.columnIndex="0">Server Name/IP</Text>
+
+        <TextField fx:id="evolisServerName" GridPane.columnIndex="1">localhost</TextField>
+
+        <Text GridPane.columnIndex="2">Port</Text>
+
+        <TextField GridPane.columnIndex="3" fx:id="evolisServerPort">18000</TextField>
+
+    </GridPane>
+
+    <GridPane GridPane.columnIndex="0" GridPane.rowIndex="2" hgap="10" vgap="10">
+
+        <Text GridPane.columnIndex="0" GridPane.rowIndex="0">JSON Request</Text>
+        <!-- Request input area -->
+        <TextArea fx:id="requestText" GridPane.columnIndex="0" GridPane.rowIndex="1">{
+            "jsonrpc":"2.0",
+            "id":"1",
+            "method":"PRINT.Begin",
+            "params":
+            {
+            "device":"Evolis Primacy"
+            }
+            }
+        </TextArea>
+
+        <!-- Send request button -->
+        <Button text="Send Request" onAction="#sendSingleRequest" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+        <!-- Send request button -->
+        <Button text="Send Multiple Request" onAction="#sendMultipleRequests" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+        <Text GridPane.columnIndex="0" GridPane.rowIndex="2">JSON Response</Text>
+
+        <!-- Response output area -->
+        <TextArea fx:id="responseText" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+
+        <!-- Clear response button -->
+        <Button text="Clear Response" onAction="#clearResponse" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+    </GridPane>
+
+</GridPane>
